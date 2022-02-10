@@ -1,17 +1,27 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import { Component } from 'react';
+import Form from './Form/Form';
+
+class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+
+  handleContact = contact => {
+    this.setState(preState => (
+      {
+        contacts: [...preState, contact]
+      }
+    ));
+  };
+
+  render() {
+    return (
+      <>
+        <Form />
+      </>
+    );
+  }
+}
+
+export default App;
