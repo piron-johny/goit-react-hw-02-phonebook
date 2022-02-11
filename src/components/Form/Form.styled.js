@@ -5,6 +5,9 @@ export const StyledForm = styled.form`
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 20px;
   & label {
     display: flex;
     justify-content: space-between;
@@ -15,10 +18,9 @@ export const StyledForm = styled.form`
   }
   & input {
     width: 100%;
-    max-width: 200px;
+    max-width: 190px;
   }
   & button {
-    margin: 15px 0;
     width: 100%;
   }
 `;

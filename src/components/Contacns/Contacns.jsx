@@ -1,12 +1,13 @@
 import { StyledContacts } from './Contacns.styled';
 
-const Contacts = ({ contacts }) => {
+const Contacts = ({ contacts, onDelete }) => {
   return (
     <StyledContacts>
       <ul>
         {contacts.map(({ name, number, id }) => (
-          <li key={id}>
-            {name} : {number}
+          <li key={id} id={id}>
+            <span>{name} : {number}</span>
+            <button onClick={onDelete}>Delete</button>
           </li>
         ))}
       </ul>

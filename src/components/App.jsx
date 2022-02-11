@@ -21,7 +21,7 @@ class App extends Component {
     let inputName = userData.name;
 
     const as = contacsListOfState.find(
-      contact => contact.name.toLowerCase() === (inputName.toLowerCase())
+      contact => contact.name.toLowerCase() === inputName.toLowerCase()
     );
 
     if (as) {
@@ -47,6 +47,24 @@ class App extends Component {
     );
   };
 
+  deleteContact = e => {
+    const { contacts } = this.state;
+    const contactId = e.currentTarget.parentNode.id;
+    const contactForDeletion = contacts.find(cont => cont.id === contactId);
+    const indexOfcontact = contacts.indexOf(contactForDeletion);
+    
+    this.setState(prevState => {
+      const contactsAfterDeletion = prevState.contacts
+      console.log('contactsAfterDeletion :>> ', contactsAfterDeletion);
+
+      contactsAfterDeletion.splice(indexOfcontact, 1)
+      console.log('contactsAfterDeletion :>> ', contactsAfterDeletion);
+
+      return {contacts: contactsAfterDeletion}
+    });
+    return;
+  };
+
   render() {
     const contactsList = this.handlesFilterOfContacts();
     const value = this.state.filter;
@@ -56,7 +74,7 @@ class App extends Component {
         <Form onSubmit={this.handleContact} />
         <h2>Contacts</h2>
         <Filter value={value} filterChange={this.handleFilterChange} />
-        <Contacts contacts={contactsList} />
+        <Contacts contacts={contactsList} onDelete={this.deleteContact} />
       </Section>
     );
   }
