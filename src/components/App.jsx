@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Section from './Section';
 import Form from './Form';
+import Filter from './Filter';
 import Contacts from './Contacns';
 
 class App extends Component {
@@ -16,29 +17,46 @@ class App extends Component {
   };
 
   handleContact = userData => {
+    const contacsListOfState = this.state.contacts;
+    let inputName = userData.name;
+
+    const as = contacsListOfState.find(
+      contact => contact.name.toLowerCase() === (inputName.toLowerCase())
+    );
+
+    if (as) {
+      return alert(`${inputName} is already is contacts`);
+    }
+
     const contact = { ...userData, id: nanoid() };
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
   };
 
-  handleFilter = e => {
+  handleFilterChange = e => {
     const { value } = e.currentTarget;
+    this.setState({ filter: value });
+  };
+
+  handlesFilterOfContacts = () => {
+    const value = this.state.filter.toLowerCase();
     const { contacts } = this.state;
-    this.setState({
-      filter: contacts.filter(contact =>
-        contact.name.toLowerCase().includes(value.toLowerCase())
-      ),
-    });
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(value)
+    );
   };
 
   render() {
-    const contactsList = this.state.contacts;
+    const contactsList = this.handlesFilterOfContacts();
+    const value = this.state.filter;
 
     return (
       <Section title="Phonebook">
         <Form onSubmit={this.handleContact} />
-        <Contacts contacts={contactsList} onFilter={this.handleFilter} />
+        <h2>Contacts</h2>
+        <Filter value={value} filterChange={this.handleFilterChange} />
+        <Contacts contacts={contactsList} />
       </Section>
     );
   }

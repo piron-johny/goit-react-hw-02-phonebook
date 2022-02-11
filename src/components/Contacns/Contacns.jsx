@@ -1,11 +1,8 @@
-import { StyledContacts, StyledInput } from './Contacns.styled';
+import { StyledContacts } from './Contacns.styled';
 
-const Contacts = ({ contacts, onFilter }) => {
+const Contacts = ({ contacts }) => {
   return (
     <StyledContacts>
-      <h2>Contacts</h2>
-      <p>Find contacts by name</p>
-      <StyledInput onChange={onFilter} />
       <ul>
         {contacts.map(({ name, number, id }) => (
           <li key={id}>

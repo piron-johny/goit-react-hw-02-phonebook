@@ -17,7 +17,7 @@ class Form extends Component {
 
     this.props.onSubmit(this.state);
 
-    this.reset();
+    // this.reset();
   };
 
   reset = () => {
