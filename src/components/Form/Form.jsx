@@ -17,7 +17,7 @@ class Form extends Component {
 
     this.props.onSubmit(this.state);
 
-    // this.reset();
+    this.reset();
   };
 
   reset = () => {
@@ -25,6 +25,7 @@ class Form extends Component {
   };
 
   render() {
+    const { name, number } = this.state;
     return (
       <StyledForm onSubmit={this.handleSubmit}>
         <label>
@@ -36,6 +37,7 @@ class Form extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={this.handleInputGange}
+            value={name}
           />
         </label>
         <label>
@@ -47,6 +49,7 @@ class Form extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={this.handleInputGange}
+            value={number}
           />
         </label>
         <button type="sabmit">Add Contact</button>

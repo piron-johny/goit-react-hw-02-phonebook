@@ -50,19 +50,11 @@ class App extends Component {
   deleteContact = e => {
     const { contacts } = this.state;
     const contactId = e.currentTarget.parentNode.id;
-    const contactForDeletion = contacts.find(cont => cont.id === contactId);
-    const indexOfcontact = contacts.indexOf(contactForDeletion);
-    
-    this.setState(prevState => {
-      const contactsAfterDeletion = prevState.contacts
-      console.log('contactsAfterDeletion :>> ', contactsAfterDeletion);
+    const contactForDeletion = contacts.filter(
+      contact => contact.id !== contactId
+    );
 
-      contactsAfterDeletion.splice(indexOfcontact, 1)
-      console.log('contactsAfterDeletion :>> ', contactsAfterDeletion);
-
-      return {contacts: contactsAfterDeletion}
-    });
-    return;
+    return this.setState({ contacts: contactForDeletion });
   };
 
   render() {

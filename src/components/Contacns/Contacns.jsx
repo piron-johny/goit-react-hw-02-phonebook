@@ -6,8 +6,12 @@ const Contacts = ({ contacts, onDelete }) => {
       <ul>
         {contacts.map(({ name, number, id }) => (
           <li key={id} id={id}>
-            <span>{name} : {number}</span>
-            <button onClick={onDelete}>Delete</button>
+            <span>
+              {name} : {number}
+            </span>
+            <button type="button" onClick={onDelete}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
