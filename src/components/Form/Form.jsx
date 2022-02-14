@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { StyledForm } from './Form.styled';
+import PropeTypes from 'prop-types';
 
 class Form extends Component {
   state = {
@@ -56,6 +57,10 @@ class Form extends Component {
       </StyledForm>
     );
   }
+}
+
+Form.propTypes = {
+  props: PropeTypes.func
 }
 
 export default Form;

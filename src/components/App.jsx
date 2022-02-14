@@ -15,16 +15,16 @@ class App extends Component {
     ],
     filter: '',
   };
-
+  
   handleContact = userData => {
     const contacsListOfState = this.state.contacts;
     let inputName = userData.name;
 
-    const as = contacsListOfState.find(
+    const isIncludesName = contacsListOfState.find(
       contact => contact.name.toLowerCase() === inputName.toLowerCase()
     );
 
-    if (as) {
+    if (isIncludesName) {
       return alert(`${inputName} is already is contacts`);
     }
 
